@@ -1,2 +1,4 @@
 phantomjs/
 *.png
+downloads/
+downloads_bkup/
