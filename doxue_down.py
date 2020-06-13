@@ -36,7 +36,12 @@ def download(driver, url, base):
     os.system(cmd)
 
 if __name__ == "__main__":
-    driver = webdriver.Chrome()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--disable-gpu')
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         url = sys.argv[1]
         print('working on ' + url)
