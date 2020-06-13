@@ -31,17 +31,12 @@ def download(driver, url, base):
     if os.path.exists(dest):
         print(dest + ' exists, skip')
         return
-    cmd = '/Users/taoli/.local/bin/m3u8 -u="%s" -o="%s"' % (video_src, 'downloads/%s/%s' % (base, name))
+    cmd = 'm3u8 -u="%s" -o="%s"' % (video_src, 'downloads/%s/%s' % (base, name))
     print('running: ' + cmd)
     os.system(cmd)
 
 if __name__ == "__main__":
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.PhantomJS()
     try:
         url = sys.argv[1]
         print('working on ' + url)
