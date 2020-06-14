@@ -28,7 +28,7 @@ def download(driver, url, base):
     name = driver.find_element_by_tag_name("h4").get_attribute("innerHTML").strip()
     print(name + " = " + video_src)
     dest = 'downloads/%s/%s' % (base, name)
-    if os.path.exists(dest):
+    if os.path.exists(dest + '/main.ts'):
         print(dest + ' exists, skip')
         return
     cmd = 'm3u8 -u="%s" -o="%s"' % (video_src, 'downloads/%s/%s' % (base, name))
